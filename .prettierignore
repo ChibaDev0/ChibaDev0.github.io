@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+build
+package-lock.json
+
+# Project instruction files managed outside code formatting conventions
+CLAUDE.md
+AGENTS.md
+.claude/
