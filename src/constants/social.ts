@@ -12,6 +12,6 @@ export const SOCIAL_LINKS = [
   {
     platform: "facebook",
     label: "Facebook",
-    href: "https://www.facebook.com/traiwit.geno/",
+    href: "https://www.facebook.com/profile.php?id=61594680574493",
   },
 ] as const;

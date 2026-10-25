@@ -1,0 +1,431 @@
+{
+  "schema_version": 1,
+  "audited_at": "2026-10-25T06:55:27.555811+00:00",
+  "github_account": "ChibaDev0",
+  "scope": "Read-only remote audit. Only this report and requested public screenshot assets were written locally. No UI/source edits, deployments, repo updates, authentication attempts, submissions or payments.",
+  "methods": [
+    "gh repo list --limit 100",
+    "gh api repository root package.json and README.md; no private contents reproduced",
+    "Python urllib HTTP GET",
+    "Fresh unauthenticated Playwright Chromium contexts at 1280x800",
+    "Visual review of three captured public landing pages"
+  ],
+  "privacy": "Private repository source, implementation architecture, dependency details and configuration are excluded from this shareable report. Public demo capabilities only.",
+  "counts": {
+    "repositories": 11,
+    "configured_homepages": 7,
+    "additional_legacy_urls": 1,
+    "urls_audited": 8,
+    "render_health": {
+      "rendered": 4,
+      "login_gate": 3,
+      "unhealthy": 1
+    },
+    "public_landing_screenshots": 3,
+    "login_preview_screenshots": 3,
+    "all_screenshot_assets": 6
+  },
+  "repositories": [
+    {
+      "name": "DilyShopTH",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": "https://dilyshopth.vercel.app",
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "included"
+    },
+    {
+      "name": "GetLine_Token",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": "https://get-line-token.vercel.app",
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "included"
+    },
+    {
+      "name": "MeowMatch",
+      "visibility": "public",
+      "source_url": "https://github.com/ChibaDev0/MeowMatch",
+      "configured_homepage": "https://meowmatch-delta.vercel.app",
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "included"
+    },
+    {
+      "name": "TourPartnerHub",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": "https://tour-partner-hub.vercel.app",
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "included"
+    },
+    {
+      "name": "Lab.1",
+      "visibility": "public",
+      "source_url": "https://github.com/ChibaDev0/Lab.1",
+      "configured_homepage": null,
+      "is_fork": false,
+      "metadata_files_read": [],
+      "demo_audit": "not_configured; no URL guessed"
+    },
+    {
+      "name": "ChibaDev0.github.io",
+      "visibility": "public",
+      "source_url": "https://github.com/ChibaDev0/ChibaDev0.github.io",
+      "configured_homepage": null,
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "not_configured; no URL guessed"
+    },
+    {
+      "name": "generate-qr",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": "https://generate-qr-liard.vercel.app",
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "included"
+    },
+    {
+      "name": "MuffinShop",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": "https://muffin-shop-psi.vercel.app",
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "included"
+    },
+    {
+      "name": "generate_prompt_midjourney",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": null,
+      "is_fork": false,
+      "metadata_files_read": [],
+      "demo_audit": "not_configured; no URL guessed"
+    },
+    {
+      "name": "DebugStudy",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": "https://debug-study.vercel.app",
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "included"
+    },
+    {
+      "name": "ChatBot_Discord",
+      "visibility": "private",
+      "source_url": null,
+      "configured_homepage": null,
+      "is_fork": false,
+      "metadata_files_read": ["package.json", "README.md"],
+      "demo_audit": "not_configured; no URL guessed"
+    }
+  ],
+  "projects": [
+    {
+      "repository_name": "DilyShopTH",
+      "requested_url": "https://dilyshopth.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://dilyshopth.vercel.app",
+      "http_redirected": false,
+      "browser_final_url": "https://dilyshopth.vercel.app/",
+      "browser_redirected": false,
+      "title": "Dily Shop — More than just fashion",
+      "render_health": "rendered",
+      "reason": "Actual public app content rendered in Chromium; inspected DOM and public screenshot. No functional workflow was submitted. Initial generic body visibility check timed out because the fixed-position layout has a zero-height body; retry and screenshot verified the rendered 3D shop scene. This is an audit-selector issue, not a dead site.",
+      "visible_headings": [],
+      "javascript_errors": [],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": {
+        "path": "public/images/projects/dilyshopth.webp",
+        "public_url": "/images/projects/dilyshopth.webp",
+        "width": 1280,
+        "height": 800,
+        "source": "Unauthenticated live Chromium viewport screenshot, converted with sharp; no generated imagery",
+        "privacy_review": "Public landing page only; no account data or private dashboard visible"
+      },
+      "recommended_metadata": {
+        "name": "DilyShopTH",
+        "description": "Interactive 3D apparel-studio landing page for Dily Shop, a handcrafted fashion brand in Phuket, Thailand.",
+        "demo_url": "https://dilyshopth.vercel.app",
+        "source_visibility": "private",
+        "source_url": null,
+        "technologies": [],
+        "technology_note": "Private implementation details intentionally withheld.",
+        "portfolio_action": "keep",
+        "feature_verification": "Landing/sign-in rendering only; no authentication, mutation, generation, downloads, booking or payments tested."
+      }
+    },
+    {
+      "repository_name": "GetLine_Token",
+      "requested_url": "https://get-line-token.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://get-line-token.vercel.app/login",
+      "http_redirected": true,
+      "browser_final_url": "https://get-line-token.vercel.app/login",
+      "browser_redirected": true,
+      "title": "LINE Vault — เครื่องมือออกโทเคน LINE OA",
+      "render_health": "login_gate",
+      "reason": "Public sign-in UI rendered without JavaScript errors; protected application functionality remains unverified.",
+      "visible_headings": ["เข้าสู่ระบบ."],
+      "javascript_errors": [],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": null,
+      "recommended_metadata": {
+        "name": "GetLine_Token",
+        "description": "Thai-language LINE OA token tool with an administrator-provisioned account sign-in page; protected functionality was not tested.",
+        "demo_url": "https://get-line-token.vercel.app",
+        "source_visibility": "private",
+        "source_url": null,
+        "technologies": [],
+        "technology_note": "Private implementation details intentionally withheld.",
+        "portfolio_action": "keep_with_login_required_label",
+        "feature_verification": "Landing/sign-in rendering only; no authentication, mutation, generation, downloads, booking or payments tested."
+      }
+    },
+    {
+      "repository_name": "MeowMatch",
+      "requested_url": "https://meowmatch-delta.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://meowmatch-delta.vercel.app/login",
+      "http_redirected": true,
+      "browser_final_url": "https://meowmatch-delta.vercel.app/login",
+      "browser_redirected": true,
+      "title": "เข้าสู่ระบบ · MeowMatch",
+      "render_health": "login_gate",
+      "reason": "Public sign-in UI rendered without JavaScript errors; protected application functionality remains unverified.",
+      "visible_headings": ["MeowMatch", "ยินดีต้อนรับกลับ"],
+      "javascript_errors": [],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": null,
+      "recommended_metadata": {
+        "name": "MeowMatch",
+        "description": "Experimental cat pairing and offspring-trait probability planning app; not a clinical genetics or DNA tool. Live demo requires sign-in.",
+        "demo_url": "https://meowmatch-delta.vercel.app",
+        "source_visibility": "public",
+        "source_url": "https://github.com/ChibaDev0/MeowMatch",
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Supabase"
+        ],
+        "technology_note": "Verified against public package.json and README.md.",
+        "portfolio_action": "keep_with_login_required_label",
+        "feature_verification": "Landing/sign-in rendering only; no authentication, mutation, generation, downloads, booking or payments tested."
+      }
+    },
+    {
+      "repository_name": "TourPartnerHub",
+      "requested_url": "https://tour-partner-hub.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://tour-partner-hub.vercel.app",
+      "http_redirected": false,
+      "browser_final_url": "https://tour-partner-hub.vercel.app/login",
+      "browser_redirected": true,
+      "title": "Tour Partner Hub",
+      "render_health": "login_gate",
+      "reason": "Public sign-in UI rendered without JavaScript errors; protected application functionality remains unverified.",
+      "visible_headings": ["จองเร็ว ลื่นไม่มีสะดุด", "เข้าสู่ระบบ"],
+      "javascript_errors": [],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": null,
+      "recommended_metadata": {
+        "name": "TourPartnerHub",
+        "description": "Travel-agent portal advertising trip availability and booking management; live demo requires sign-in and protected booking flows were not tested.",
+        "demo_url": "https://tour-partner-hub.vercel.app",
+        "source_visibility": "private",
+        "source_url": null,
+        "technologies": [],
+        "technology_note": "Private implementation details intentionally withheld.",
+        "portfolio_action": "keep_with_login_required_label",
+        "feature_verification": "Landing/sign-in rendering only; no authentication, mutation, generation, downloads, booking or payments tested."
+      }
+    },
+    {
+      "repository_name": "generate-qr",
+      "requested_url": "https://generate-qr-liard.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://generate-qr-liard.vercel.app",
+      "http_redirected": false,
+      "browser_final_url": "https://generate-qr-liard.vercel.app/",
+      "browser_redirected": false,
+      "title": "JustQR — Generate Beautiful QR Codes Instantly",
+      "render_health": "rendered",
+      "reason": "Actual public app content rendered in Chromium; inspected DOM and public screenshot. No functional workflow was submitted.",
+      "visible_headings": ["GenerateBeautifulQR CodesInstantly"],
+      "javascript_errors": [],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": {
+        "path": "public/images/projects/generate-qr.webp",
+        "public_url": "/images/projects/generate-qr.webp",
+        "width": 1280,
+        "height": 800,
+        "source": "Unauthenticated live Chromium viewport screenshot, converted with sharp; no generated imagery",
+        "privacy_review": "Public landing page only; no account data or private dashboard visible"
+      },
+      "recommended_metadata": {
+        "name": "JustQR",
+        "description": "JustQR: public QR-code generator interface with URL input, color customization, optional logo, preview and PNG download controls. Generation and downloads were not exercised.",
+        "demo_url": "https://generate-qr-liard.vercel.app",
+        "source_visibility": "private",
+        "source_url": null,
+        "technologies": [],
+        "technology_note": "Private implementation details intentionally withheld.",
+        "portfolio_action": "keep",
+        "feature_verification": "Landing/sign-in rendering only; no authentication, mutation, generation, downloads, booking or payments tested."
+      }
+    },
+    {
+      "repository_name": "MuffinShop",
+      "requested_url": "https://muffin-shop-psi.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://muffin-shop-psi.vercel.app",
+      "http_redirected": false,
+      "browser_final_url": "https://muffin-shop-psi.vercel.app/",
+      "browser_redirected": false,
+      "title": "",
+      "render_health": "unhealthy",
+      "reason": "HTTP 200 shell resolves to a visible server error in Chromium; reproduced in a fresh browser page. Error digest 825124758.",
+      "visible_headings": ["This page couldn’t load"],
+      "javascript_errors": [
+        "An error occurred in the Server Components render. The specific message is omitted in production builds to avoid leaking sensitive details. A digest property is included on this error instance which may provide additional details about the nature of the error."
+      ],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": null,
+      "recommended_metadata": {
+        "name": "MuffinShop",
+        "description": "Deployed application currently displays a server-rendering error; product functionality cannot be verified.",
+        "demo_url": null,
+        "source_visibility": "private",
+        "source_url": null,
+        "technologies": [],
+        "technology_note": "Private implementation details intentionally withheld.",
+        "portfolio_action": "hide_demo_until_fixed",
+        "feature_verification": "Landing/sign-in rendering only; no authentication, mutation, generation, downloads, booking or payments tested."
+      }
+    },
+    {
+      "repository_name": "DebugStudy",
+      "requested_url": "https://debug-study.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://debug-study.vercel.app",
+      "http_redirected": false,
+      "browser_final_url": "https://debug-study.vercel.app/",
+      "browser_redirected": false,
+      "title": "Debug Study",
+      "render_health": "rendered",
+      "reason": "Actual public app content rendered in Chromium; inspected DOM and public screenshot. No functional workflow was submitted.",
+      "visible_headings": ["Debug Your Academic Life", "About", "Contact"],
+      "javascript_errors": [],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": {
+        "path": "public/images/projects/debug-study.webp",
+        "public_url": "/images/projects/debug-study.webp",
+        "width": 1280,
+        "height": 800,
+        "source": "Unauthenticated live Chromium viewport screenshot, converted with sharp; no generated imagery",
+        "privacy_review": "Public landing page only; no account data or private dashboard visible"
+      },
+      "recommended_metadata": {
+        "name": "DebugStudy",
+        "description": "Student-productivity platform foundation with a public introduction and account-entry links. Advanced scheduling, grades, email and AI features were not demonstrated by the landing page.",
+        "demo_url": "https://debug-study.vercel.app",
+        "source_visibility": "private",
+        "source_url": null,
+        "technologies": [],
+        "technology_note": "Private implementation details intentionally withheld.",
+        "portfolio_action": "keep",
+        "feature_verification": "Landing/sign-in rendering only; no authentication, mutation, generation, downloads, booking or payments tested."
+      }
+    },
+    {
+      "repository_name": null,
+      "requested_url": "https://justqr.vercel.app",
+      "http_status": 200,
+      "http_final_url": "https://justqr.vercel.app",
+      "http_redirected": false,
+      "browser_final_url": "https://justqr.vercel.app/",
+      "browser_redirected": false,
+      "title": "JustQR — Generate Beautiful QR Codes Instantly",
+      "render_health": "rendered",
+      "reason": "Legacy URL is alive and renders the same JustQR branding and controls as the repository homepage; deployment identity was not independently established. Prefer configured repository homepage rather than treating this URL as dead.",
+      "visible_headings": ["GenerateBeautifulQR CodesInstantly"],
+      "javascript_errors": [],
+      "checked_with": [
+        "Python urllib GET",
+        "Playwright Chromium DOM inspection"
+      ],
+      "screenshot": null
+    }
+  ],
+  "findings": [
+    "All eight requested URLs returned HTTP 200, but MuffinShop visibly fails during server rendering. HTTP status alone would give a false positive.",
+    "GetLine_Token, MeowMatch and TourPartnerHub are working sign-in entry points, not verified open application demos.",
+    "DilyShopTH, JustQR and DebugStudy expose verified public landing UIs.",
+    "Legacy justqr.vercel.app is not dead. generate-qr-liard.vercel.app is the configured repository homepage.",
+    "Do not present DebugStudy AI/scheduling/grades/email capabilities as verified implemented features; the current public page describes a platform foundation."
+  ],
+  "limitations": [
+    "No account credentials were used. Protected dashboards and authenticated functionality were not audited.",
+    "A rendered landing page is not end-to-end application health verification.",
+    "Vercel project inventory supplied by the delegating context was not independently queried in this audit.",
+    "Private README text was read only in memory; private implementation details were deliberately excluded."
+  ],
+  "additional_login_previews": [
+    {
+      "repository_name": "GetLine_Token",
+      "path": "public/images/projects/line-vault.webp",
+      "width": 1280,
+      "height": 800,
+      "http_status": 200,
+      "visible_surface": "Unauthenticated public sign-in page only",
+      "captured_on": "2026-10-25"
+    },
+    {
+      "repository_name": "MeowMatch",
+      "path": "public/images/projects/meowmatch.webp",
+      "width": 1280,
+      "height": 800,
+      "http_status": 200,
+      "visible_surface": "Unauthenticated public sign-in page only",
+      "captured_on": "2026-10-25"
+    },
+    {
+      "repository_name": "TourPartnerHub",
+      "path": "public/images/projects/tour-partner-hub.webp",
+      "width": 1280,
+      "height": 800,
+      "http_status": 200,
+      "visible_surface": "Unauthenticated public sign-in page only",
+      "captured_on": "2026-10-25"
+    }
+  ]
+}

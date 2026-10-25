@@ -1,99 +1,63 @@
-"use client";
-
-import { motion, type Variants } from "framer-motion";
-import {
-  ACHIEVEMENTS,
-  EDUCATION,
-  WORK_EXPERIENCE,
-} from "@/constants/experience";
-import { Timeline } from "@/components/Timeline";
-
-const containerVariants: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
-const workItems = WORK_EXPERIENCE.map((item) => ({
-  title: item.role,
-  subtitle: item.org,
-  period: item.period,
-  description: item.description,
-}));
-
-const educationItems = EDUCATION.map((item) => ({
-  title: item.stage,
-  subtitle: item.school,
-  period: item.period,
-}));
+import { WORK_EXPERIENCE, ACHIEVEMENTS } from "@/constants/experience";
 
 export function Experience() {
+  const experience = [
+    WORK_EXPERIENCE[3],
+    WORK_EXPERIENCE[1],
+    WORK_EXPERIENCE[0],
+  ];
   return (
-    <section id="experience" className="relative px-6 py-24">
-      <div className="mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-12 text-center"
-        >
-          <span className="text-accent text-sm font-medium tracking-wide uppercase">
-            Experience
-          </span>
-          <h2 className="text-foreground mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            My Journey
+    <section
+      id="experience"
+      className="section-shell experience-section"
+      aria-labelledby="experience-heading"
+    >
+      <div className="section-kicker">
+        <span>03 / THE JOURNEY</span>
+        <span>EXPERIENCE SHAPES THE WORK.</span>
+      </div>
+      <div className="experience-layout">
+        <div>
+          <h2 id="experience-heading">
+            Always learning.
+            <br />
+            <span className="muted-heading">Always moving.</span>
           </h2>
-        </motion.div>
-
-        <div className="grid gap-16 md:grid-cols-2">
-          <div>
-            <h3 className="text-foreground mb-6 text-lg font-semibold tracking-tight">
-              Work Experience
-            </h3>
-            <Timeline items={workItems} />
-          </div>
-          <div>
-            <h3 className="text-foreground mb-6 text-lg font-semibold tracking-tight">
-              Education
-            </h3>
-            <Timeline items={educationItems} />
+          <p className="section-description">
+            From game-server systems to web products, each chapter adds
+            something to the way I build.
+          </p>
+          <div className="education-note">
+            <span className="eyebrow">CURRENTLY</span>
+            <strong>B.Sc. Computer Science</strong>
+            <span>Prince of Songkla University, Phuket</span>
+            <span>Second-year student</span>
           </div>
         </div>
-
-        <div className="mt-16">
-          <h3 className="text-foreground mb-6 text-lg font-semibold tracking-tight">
-            Achievements & Awards
-          </h3>
-          <motion.ul
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid gap-4 sm:grid-cols-3"
-          >
-            {ACHIEVEMENTS.map((achievement) => (
-              <motion.li
-                key={achievement.title}
-                variants={itemVariants}
-                className="border-border bg-card rounded-card flex flex-col gap-2 border p-5"
-              >
-                <p className="text-accent text-xs font-medium tracking-wide uppercase">
-                  {achievement.event}
-                </p>
-                <h4 className="text-foreground text-sm font-semibold">
-                  {achievement.title}
-                </h4>
-                <p className="text-foreground/60 text-sm">
-                  {achievement.award}
-                </p>
-              </motion.li>
-            ))}
-          </motion.ul>
+        <div className="experience-list">
+          {experience.map((item) => (
+            <article className="experience-item" key={item.org}>
+              <span className="experience-period">{item.period}</span>
+              <h3>{item.role}</h3>
+              <p className="experience-org">{item.org}</p>
+              {item.description && <p>{item.description}</p>}
+            </article>
+          ))}
+        </div>
+      </div>
+      <div className="awards">
+        <p className="eyebrow">RECOGNITION / INVENTION & INNOVATION</p>
+        <div className="awards-grid">
+          {[...ACHIEVEMENTS].reverse().map((item) => (
+            <article key={item.title}>
+              <span className="award-symbol" aria-hidden="true">
+                ✳
+              </span>
+              <h3>{item.title}</h3>
+              <p>{item.event}</p>
+              <strong>{item.award}</strong>
+            </article>
+          ))}
         </div>
       </div>
     </section>

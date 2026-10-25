@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Traiwit Kunrapeepat",
   shortName: "Traiwit",
   initials: "TK",
-  title: "Traiwit Kunrapeepat — Developer",
+  title: "Traiwit Kunrapeepat — Developer & Creative Builder",
   description:
-    "Portfolio of Traiwit Kunrapeepat, a front-end developer building modern, high-performance web experiences.",
+    "Developer portfolio of Traiwit Kunrapeepat. Explore web applications, interactive experiences, and tools built with React, Next.js, TypeScript, and creative technology.",
 } as const;

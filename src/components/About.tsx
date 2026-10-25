@@ -1,53 +1,89 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ABOUT_CONTENT } from "@/constants/about";
 import { siteConfig } from "@/constants/site";
-import { SocialLinks } from "@/components/SocialLinks";
 
+const capabilities = [
+  {
+    number: "01",
+    title: "Interfaces that feel right",
+    description:
+      "Responsive layouts, considered interactions, and a clear path from intention to action.",
+    stack: "REACT · NEXT.JS · TYPESCRIPT",
+  },
+  {
+    number: "02",
+    title: "More than the frontend",
+    description:
+      "Connecting interfaces to APIs, authentication, and the data that makes a product useful.",
+    stack: "NODE.JS · API INTEGRATION · DATABASES",
+  },
+  {
+    number: "03",
+    title: "A creative edge",
+    description:
+      "A background in content creation and an interest in 3D bring a different perspective to the work.",
+    stack: "BLENDER · THREE.JS · CREATIVE TOOLS",
+  },
+];
 export function About() {
   return (
-    <section id="about" className="relative px-6 py-24">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-12 md:flex-row md:items-start">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex shrink-0 flex-col items-center gap-4"
-        >
-          <div className="from-primary via-secondary to-accent h-32 w-32 rounded-full bg-gradient-to-br p-[3px]">
-            <div className="bg-background h-full w-full overflow-hidden rounded-full">
-              <Image
-                src="/images/profile.webp"
-                alt={siteConfig.name}
-                width={128}
-                height={128}
-                className="h-full w-full object-cover"
-              />
-            </div>
+    <section
+      id="about"
+      className="about-section section-shell"
+      aria-labelledby="about-heading"
+    >
+      <div className="section-kicker">
+        <span>02 / BEHIND THE CODE</span>
+        <span>CURIOUS BY DEFAULT.</span>
+      </div>
+      <div className="about-layout">
+        <div className="about-profile">
+          <div className="portrait-wrap">
+            <Image
+              src="/images/profile.webp"
+              alt={siteConfig.name}
+              width={360}
+              height={420}
+              sizes="(max-width: 760px) 80vw, 360px"
+            />
+            <span className="portrait-label">TRAIWIT / THAILAND</span>
           </div>
-          <SocialLinks />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-          className="text-center md:text-left"
-        >
-          <span className="text-accent text-sm font-medium tracking-wide uppercase">
-            {ABOUT_CONTENT.eyebrow}
-          </span>
-          <h2 className="text-foreground mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            {siteConfig.name}
+          <div className="profile-caption">
+            <span className="status-dot" /> Developer. Student. Always a
+            builder.
+          </div>
+        </div>
+        <div className="about-copy">
+          <p className="eyebrow">HELLO, I’M TRAIWIT.</p>
+          <h2 id="about-heading">
+            A curious mind.
+            <br />
+            <span className="muted-heading">A hands-on approach.</span>
           </h2>
-          <p className="text-foreground/70 mt-6 max-w-xl text-base leading-relaxed sm:text-lg">
-            {ABOUT_CONTENT.paragraph}
+          <p>
+            I’m {siteConfig.name}, a Computer Science student at Prince of
+            Songkla University, Phuket. I build for the web, learn by doing, and
+            care about the details that make a product feel complete.
           </p>
-        </motion.div>
+          <p>
+            I work across frontend development and backend integrations, using
+            AI-assisted workflows as part of my toolkit. My focus is simple:
+            understand the problem, build something useful, and keep improving
+            it.
+          </p>
+          <a className="text-link" href="#contact">
+            Let’s build something together <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+      <div id="skills" className="capability-grid">
+        {capabilities.map((item) => (
+          <div className="capability" key={item.number}>
+            <span className="capability-number">{item.number} /</span>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <span className="capability-stack">{item.stack}</span>
+          </div>
+        ))}
       </div>
     </section>
   );

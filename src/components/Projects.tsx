@@ -1,53 +1,79 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { useState } from "react";
 import { PROJECTS } from "@/constants/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 
-const containerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
-
+const FILTERS = ["All projects", "Web applications", "Tools"] as const;
 export function Projects() {
+  const [filter, setFilter] = useState<string>("All projects");
+  const visible = PROJECTS.filter(
+    (project) => filter === "All projects" || project.category === filter,
+  );
   return (
-    <section id="projects" className="relative px-6 py-24">
-      <div className="mx-auto max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="mb-12 text-center"
-        >
-          <span className="text-accent text-sm font-medium tracking-wide uppercase">
-            Projects
-          </span>
-          <h2 className="text-foreground mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Things I&apos;ve Built
-          </h2>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {PROJECTS.map((project) => (
-            <motion.div key={project.name} variants={itemVariants}>
-              <ProjectCard project={project} />
-            </motion.div>
+    <section
+      id="projects"
+      className="section-shell work-section"
+      aria-labelledby="work-heading"
+    >
+      <div className="section-kicker">
+        <span>01 / SELECTED WORK</span>
+        <span>IDEAS, MADE REAL.</span>
+      </div>
+      <div className="section-heading">
+        <h2 id="work-heading">
+          Less talk.
+          <br />
+          <span className="muted-heading">More building.</span>
+        </h2>
+        <p>
+          A selection of web applications, interactive experiences, and focused
+          tools. Real projects you can explore.
+        </p>
+      </div>
+      <div className="work-toolbar">
+        <div className="project-filters" aria-label="Filter projects">
+          {FILTERS.map((item) => (
+            <button
+              type="button"
+              key={item}
+              aria-pressed={filter === item}
+              onClick={() => setFilter(item)}
+            >
+              {item}
+            </button>
           ))}
-        </motion.div>
+        </div>
+        <span className="project-count" aria-live="polite">
+          {String(visible.length).padStart(2, "0")} PROJECTS
+        </span>
+      </div>
+      <div className="projects-grid">
+        {visible.map((project, index) => (
+          <ProjectCard
+            key={project.name}
+            project={project}
+            featured={
+              filter === "All projects" &&
+              (index === 0 || index === visible.length - 1)
+            }
+            index={index}
+          />
+        ))}
+      </div>
+      <div className="work-footnote">
+        <span>
+          Public demos checked October 25, 2026. Preview availability can
+          change.
+        </span>
+        <a
+          className="text-link"
+          href="https://github.com/ChibaDev0?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          More on GitHub <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </section>
   );

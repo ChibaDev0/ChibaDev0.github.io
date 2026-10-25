@@ -1,134 +1,124 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
-import {
-  CONTACT_CONTENT,
-  WEB3FORMS_ACCESS_KEY,
-  WEB3FORMS_ENDPOINT,
-} from "@/constants/contact";
-import { SocialLinks } from "@/components/SocialLinks";
-
+import { WEB3FORMS_ACCESS_KEY, WEB3FORMS_ENDPOINT } from "@/constants/contact";
+import { SOCIAL_LINKS } from "@/constants/social";
 type Status = "idle" | "loading" | "success" | "error";
-
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
-    if (!WEB3FORMS_ACCESS_KEY) {
-      setStatus("error");
-      return;
-    }
-
-    setStatus("loading");
+    if (!WEB3FORMS_ACCESS_KEY || status === "loading") return;
     const form = event.currentTarget;
-    const formData = new FormData(form);
-    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-
+    const data = new FormData(form);
+    data.append("access_key", WEB3FORMS_ACCESS_KEY);
+    setStatus("loading");
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
-        body: formData,
+        body: data,
       });
       const result = await response.json();
-
-      if (result.success) {
-        setStatus("success");
-        form.reset();
-      } else {
-        setStatus("error");
-      }
+      if (!response.ok || !result.success) throw new Error("Submission failed");
+      setStatus("success");
+      form.reset();
     } catch {
       setStatus("error");
     }
-  };
-
+  }
+  const instagram = SOCIAL_LINKS.find((link) => link.platform === "instagram")!;
+  const facebook = SOCIAL_LINKS.find((link) => link.platform === "facebook")!;
   return (
-    <section id="contact" className="relative px-6 py-24">
-      <div className="mx-auto max-w-xl text-center">
-        <span className="text-accent text-sm font-medium tracking-wide uppercase">
-          {CONTACT_CONTENT.eyebrow}
-        </span>
-        <h2 className="text-foreground mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-          {CONTACT_CONTENT.heading}
+    <section
+      id="contact"
+      className="section-shell contact-section"
+      aria-labelledby="contact-heading"
+    >
+      <div className="contact-panel">
+        <div className="availability">
+          <span /> OPEN TO NEW COLLABORATIONS
+        </div>
+        <h2 id="contact-heading">
+          Good things start
+          <br />
+          with <span className="serif-word">a conversation.</span>
         </h2>
-        <p className="text-foreground/70 mt-4 text-base sm:text-lg">
-          {CONTACT_CONTENT.description}
+        <p className="contact-description">
+          A project in mind? A problem worth solving? I’m open to freelance
+          projects and junior developer opportunities.
         </p>
-      </div>
-
-      <motion.form
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="border-border bg-card rounded-card mx-auto mt-10 flex max-w-xl flex-col gap-4 border p-6 sm:p-8"
-      >
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="name" className="text-foreground/70 text-sm">
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              className="border-border bg-background/50 text-foreground focus:border-primary rounded-lg border px-3 py-2 text-sm outline-none"
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="email" className="text-foreground/70 text-sm">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className="border-border bg-background/50 text-foreground focus:border-primary rounded-lg border px-3 py-2 text-sm outline-none"
-            />
-          </div>
+        <div className="contact-actions">
+          <a
+            className="button button-primary"
+            href={instagram.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Message on Instagram <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            className="text-link"
+            href={facebook.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Find me on Facebook <span aria-hidden="true">↗</span>
+          </a>
         </div>
-
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="message" className="text-foreground/70 text-sm">
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows={5}
-            className="border-border bg-background/50 text-foreground focus:border-primary rounded-lg border px-3 py-2 text-sm outline-none"
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="from-primary to-secondary mt-2 inline-flex items-center justify-center rounded-full bg-gradient-to-r px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-50"
-        >
-          {status === "loading" ? "Sending..." : "Send Message"}
-        </button>
-
-        {status === "success" && (
-          <p className="text-accent text-sm">
-            Thanks! Your message has been sent — I&apos;ll get back to you soon.
-          </p>
+        <p className="contact-caption">
+          Let’s talk about what you’re building.
+        </p>
+        {WEB3FORMS_ACCESS_KEY && (
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-row">
+              <label htmlFor="name">
+                Your name
+                <input
+                  id="name"
+                  name="name"
+                  autoComplete="name"
+                  required
+                  maxLength={120}
+                />
+              </label>
+              <label htmlFor="email">
+                Email address
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  required
+                  maxLength={254}
+                />
+              </label>
+            </div>
+            <label htmlFor="message">
+              Tell me about your project
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={4}
+                maxLength={5000}
+              />
+            </label>
+            <button
+              type="submit"
+              className="button button-primary"
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? "Sending…" : "Send message ↗"}
+            </button>
+            <div className="form-status" role="status" aria-live="polite">
+              {status === "success"
+                ? "Thanks! Your message was sent."
+                : status === "error"
+                  ? "Your message could not be sent. Please try again or use the social links above."
+                  : ""}
+            </div>
+          </form>
         )}
-        {status === "error" && (
-          <p className="text-sm text-red-400">
-            Something went wrong. Please try again, or reach out directly below.
-          </p>
-        )}
-      </motion.form>
-
-      <div className="mt-10 flex justify-center">
-        <SocialLinks />
       </div>
     </section>
   );

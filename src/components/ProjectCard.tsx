@@ -1,57 +1,78 @@
+import Image from "next/image";
 import type { PROJECTS } from "@/constants/projects";
-import { cn } from "@/lib/utils";
 
 type Project = (typeof PROJECTS)[number];
-
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  featured = false,
+  index,
+}: {
+  project: Project;
+  featured?: boolean;
+  index: number;
+}) {
   return (
-    <a
-      href={project.href}
-      target="_blank"
-      rel="noreferrer noopener"
-      className="border-border bg-card rounded-card hover:border-primary/50 group flex flex-col gap-4 border p-6 transition-colors hover:-translate-y-1 hover:shadow-[0_0_40px_-15px_rgba(139,92,246,0.5)]"
-      style={{ transitionProperty: "transform, box-shadow, border-color" }}
+    <article
+      className={`project-card ${featured ? "featured-project" : ""}`}
+      data-category={project.category}
     >
-      <div className="flex items-start justify-between gap-3">
-        <h3 className="text-foreground text-lg font-semibold tracking-tight">
-          {project.name}
-        </h3>
-        <span
-          className={cn(
-            "shrink-0 rounded-full border px-3 py-1 text-xs font-medium",
-            project.status === "Live"
-              ? "border-accent/40 text-accent"
-              : "border-border text-foreground/60",
+      <a
+        className="project-visual"
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div className="preview-chrome" aria-hidden="true">
+          <span className="chrome-dots">● ● ●</span>
+          <span>{new URL(project.href).hostname}</span>
+          <span>↗</span>
+        </div>
+        <div className="preview-image">
+          <Image
+            src={project.image}
+            alt={`${project.name} public website preview`}
+            width={1280}
+            height={800}
+            sizes={
+              featured
+                ? "(max-width: 760px) 100vw, 60vw"
+                : "(max-width: 760px) 100vw, 50vw"
+            }
+          />
+          <span className="preview-open">
+            Explore project <span aria-hidden="true">↗</span>
+          </span>
+        </div>
+      </a>
+      <div className="project-body">
+        <div className="project-meta">
+          <span>
+            {String(index + 1).padStart(2, "0")} / {project.category}
+          </span>
+          <span className="demo-status">
+            <span /> {project.status}
+          </span>
+        </div>
+        <h3>{project.name}</h3>
+        <p>{project.description}</p>
+        <ul className="tech-tags">
+          {project.tech.map((tech) => (
+            <li key={tech}>{tech}</li>
+          ))}
+        </ul>
+        <div className="project-links">
+          <a href={project.href} target="_blank" rel="noopener noreferrer">
+            Visit website <span aria-hidden="true">↗</span>
+          </a>
+          {project.source ? (
+            <a href={project.source} target="_blank" rel="noopener noreferrer">
+              Source code <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <span className="private-source">Private source</span>
           )}
-        >
-          {project.status}
-        </span>
+        </div>
       </div>
-
-      <p className="text-foreground/70 text-sm leading-relaxed">
-        {project.description}
-      </p>
-
-      <ul className="mt-auto flex flex-wrap gap-2 pt-2">
-        {project.tech.map((tech) => (
-          <li
-            key={tech}
-            className="border-border text-foreground/60 rounded-full border px-2.5 py-1 text-xs"
-          >
-            {tech}
-          </li>
-        ))}
-      </ul>
-
-      <span className="text-primary group-hover:text-accent inline-flex items-center gap-1 text-sm font-medium transition-colors">
-        View Project
-        <span
-          aria-hidden
-          className="transition-transform group-hover:translate-x-1"
-        >
-          →
-        </span>
-      </span>
-    </a>
+    </article>
   );
 }
